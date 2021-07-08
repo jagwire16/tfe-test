@@ -23,6 +23,6 @@ variable "location" {
 }
 
 resource "azurerm_resource_group" "test_resource_group" {
-  name = local.resource_group_name
+  name = "rg-test-${local.resource_group_name}"
   location = var.location
 }
