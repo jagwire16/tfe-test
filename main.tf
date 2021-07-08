@@ -13,9 +13,8 @@ provider "azurerm" {
   features {}
 }
 
-variable "resource_group_name" {
-  type = string
-  default = "rg-test-2021-07-07-2205"
+locals {
+  resource_group_name = formatdate("YYYY-MM-DD-hhmmss", timestamp())
 }
 
 variable "location" {
@@ -24,6 +23,6 @@ variable "location" {
 }
 
 resource "azurerm_resource_group" "test_resource_group" {
-  name = var.resource_group_name
+  name = local.resource_group_name
   location = var.location
 }
